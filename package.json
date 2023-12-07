@@ -1,0 +1,19 @@
+{
+  "name": "imor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jsdom": "^21.1.3",
+    "@tsconfig/node18": "^18.2.2",
+    "@types/node": "^18.18.5",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.0"
+  }
+}
