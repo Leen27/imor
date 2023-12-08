@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "editor:dev": "pnpm --filter @cvrts/editor run dev",
+    "editor:build": "pnpm --filter @cvrts/editor run build"
   },
   "keywords": [],
   "author": "",

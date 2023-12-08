@@ -29,13 +29,17 @@ importers:
 
   packages/core:
     devDependencies:
-      '@imor/shared':
+      '@cvrts/shared':
         specifier: workspace:*
         version: link:../shared
 
-  packages/diag:
+  packages/editor:
+    dependencies:
+      konva:
+        specifier: ^9.2.3
+        version: 9.2.3
     devDependencies:
-      '@imor/shared':
+      '@cvrts/shared':
         specifier: workspace:*
         version: link:../shared
 
@@ -550,6 +554,10 @@ packages:
   /jsonc-parser@3.2.0:
     resolution: {integrity: sha512-gfFQZrcTc8CnKXp6Y4/CBT3fTc0OVuDofpre4aEeEpSBPV5X5v4+Vmx+8snU7RLPrNHPKSgLxGo9YuQzz20o+w==}
     dev: true
+
+  /konva@9.2.3:
+    resolution: {integrity: sha512-oQ6VQ6kUL9IlhOGuEKKhxqnv6g/t8jZpVuWahQQ6hCqAsO8Ydi1zFGv7ef4EOq5GoPNq/d6Fyj/3i5Y/a5NooA==}
+    dev: false
 
   /local-pkg@0.5.0:
     resolution: {integrity: sha512-ok6z3qlYyCDS4ZEU27HaU6x/xZa9Whf8jD4ptH5UZTQYZVYeb9bnZ3ojVhiJNLiXK1Hfc0GNbLXcmZ5plLDDBg==}

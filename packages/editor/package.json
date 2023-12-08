@@ -1,7 +1,8 @@
 {
-  "name": "@cvrts/diag",
+  "name": "@cvrts/editor",
   "private": true,
   "version": "0.0.0",
+  "description": "Rule Editor 规则编辑器",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,6 +10,9 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@imor/shared": "workspace:*"
+    "@cvrts/shared": "workspace:*"
+  },
+  "dependencies": {
+    "konva": "^9.2.3"
   }
 }

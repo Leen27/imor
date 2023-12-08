@@ -16,6 +16,6 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@imor/shared": "workspace:*"
+    "@cvrts/shared": "workspace:*"
   }
 }
