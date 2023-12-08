@@ -7,6 +7,9 @@
   "author": "",
   "license": "ISC",
   "exports": {
+    "./types": {
+      "import": "./dist/types/index.js"
+    },
     "./configs/*.json": "./configs/*.json",
     "./configs/*": {
       "import": "./configs/*.json"
