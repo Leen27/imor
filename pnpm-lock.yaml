@@ -33,7 +33,11 @@ importers:
         specifier: workspace:*
         version: link:../shared
 
-  packages/diag: {}
+  packages/diag:
+    devDependencies:
+      '@imor/shared':
+        specifier: workspace:*
+        version: link:../shared
 
   packages/shared: {}
 

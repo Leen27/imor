@@ -1,5 +1,5 @@
 {
-  "name": "@imor/shared",
+  "name": "@cvrts/shared",
   "version": "1.0.0",
   "private": true,
   "description": "An infrastructure monorepo shared library for all projects and apps.",
