@@ -27,7 +27,15 @@ importers:
         specifier: ^1.0.1
         version: 1.0.1(@types/node@18.19.3)
 
-  packages/core: {}
+  packages/core:
+    devDependencies:
+      '@imor/shared':
+        specifier: workspace:*
+        version: link:../shared
+
+  packages/diag: {}
+
+  packages/shared: {}
 
 packages:
 

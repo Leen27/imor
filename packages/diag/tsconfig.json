@@ -1,5 +1,10 @@
 {
-  "extends": "@imor/shared/configs/tsconfig.base.json",
+  "references": [
+    {
+      "path": "../tsconfig/tsconfig.node.json"
+    },
+  ],
+  "extends": "../tsconfig/tsconfig.lib.json",
   "compilerOptions": {
     "baseUrl": ".",
     "rootDir": "src",

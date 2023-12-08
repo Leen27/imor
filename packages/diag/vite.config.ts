@@ -5,7 +5,7 @@ export default defineConfig({
     build: {
         lib: {
             entry: resolve(__dirname, 'src/main.ts'),
-            name: 'imor-core',
+            name: 'imor-diag',
             fileName: 'index'
         },
         rollupOptions: {

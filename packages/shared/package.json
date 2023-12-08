@@ -1,0 +1,15 @@
+{
+  "name": "@imor/shared",
+  "version": "1.0.0",
+  "private": true,
+  "description": "An infrastructure monorepo shared library for all projects and apps.",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "exports": {
+    "./configs/*.json": "./configs/*.json",
+    "./configs/*": {
+      "import": "./configs/*.json"
+    }
+  }
+}
