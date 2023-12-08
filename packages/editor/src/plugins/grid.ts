@@ -5,6 +5,12 @@ export default () => ({
 
   install(stage: Stage): void {
     this.drawUseCss(stage)
+
+    stage.on('dragmove', function () {
+        console.log(stage.position().x)
+        stage.content.style.backgroundPositionX = `${stage.position().x}px`
+        stage.content.style.backgroundPositionY = `${stage.position().y}px`
+    });
   },
 
   drawUseCss(stage: Stage) {    
