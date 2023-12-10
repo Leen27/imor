@@ -1,1 +1,1 @@
-export type a = {}
+export * from './rule'

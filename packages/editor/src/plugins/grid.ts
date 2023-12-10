@@ -1,9 +1,9 @@
-import { Stage } from "konva/lib/Stage";
+import Konva from "konva";
 
 export default () => ({
   name: 'editor-bg-grid',
 
-  install(stage: Stage): void {
+  install(stage: Konva.Stage): void {
     this.drawUseCss(stage)
 
     stage.on('dragmove', function () {
@@ -13,7 +13,7 @@ export default () => ({
     });
   },
 
-  drawUseCss(stage: Stage) {    
+  drawUseCss(stage: Konva.Stage) {    
     stage.content.style.backgroundSize = `50px 50px`
     stage.content.style.backgroundImage = `linear-gradient(to right, grey 1px, transparent 1px),linear-gradient(to bottom, grey 1px, transparent 1px)`
   }

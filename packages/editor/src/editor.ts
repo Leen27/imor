@@ -19,20 +19,51 @@ export class Editor {
   constructor(private el: HTMLDivElement, configs?: EditorConfigT) {
     this.engine = this.initStage(el);
 
-    var layer = new Konva.Layer();
+    
+    const addNode = (layer) => {
+        var circle = new Konva.Circle({
+            x: 5000 * Math.random(),
+            y: 5000 * Math.random(),
+            radius: 10,
+            fill: 'red',
+            stroke: 'black',
+            strokeWidth: 4,
+            draggable: true
+          });
+      
+        layer.add(circle);
+      }
 
-    var circle = new Konva.Circle({
-      x:  this.engine.width() / 2,
-      y:  this.engine.height() / 2,
-      radius: 70,
-      fill: 'red',
-      stroke: 'black',
-      strokeWidth: 4,
-      draggable: true
-    });
+      var nodeCount = 0;
+      var layer = new Konva.Layer();
 
-    // add the shape to the layer
-    layer.add(circle);
+    for(let i = 0; i < 3000; i++) {
+
+        addNode(layer);
+          nodeCount++;
+          if (nodeCount >= 1000) {
+            nodeCount = 0;
+            this.engine.add(layer);
+            layer = new Konva.Layer();
+          }
+    }
+
+    // this.engine.on('mouseover mousemove dragmove', function (evt) {
+    //     var node = evt.target;
+    //     if (node) {
+    //       // update tooltip
+    //       var mousePos = node.getStage()?.getPointerPosition();
+    //       tooltip.position({
+    //         x: mousePos.x,
+    //         y: mousePos.y - 5,
+    //       });
+    //       tooltip
+    //         .getText()
+    //         .text('node: ' + node.id() + ', color: ' + node.fill());
+    //       tooltip.show();
+    //     }
+    //   });
+
 
     // add the layer to the  this.engine
      this.engine.add(layer);

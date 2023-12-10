@@ -6,6 +6,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "scripts": {
+    "build:utils": "tsc && vite build -c vite-utils.config.ts"
+  },
   "exports": {
     "./types": {
       "import": "./dist/types/index.js"
@@ -14,5 +17,8 @@
     "./configs/*": {
       "import": "./configs/*.json"
     }
+  },
+  "dependencies": {
+    "xml2js": "^0.6.2"
   }
 }

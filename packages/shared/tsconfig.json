@@ -2,9 +2,11 @@
     "extends": "./configs/tsconfig.base.json",
     "compilerOptions": {
       "declaration": true,
-      "target": "es6",
-      "module": "commonjs",
-      "baseUrl": "."
+      "emitDeclarationOnly": true,
+      "noEmit": false,
+      "composite": true,
+      "baseUrl": ".",
     },
-    "include": ["**/*.ts"]
+    "include": ["**/*.ts", "types/**/*.ts"],
+    "exclude": ["vite-utils.config.ts"]
   }
