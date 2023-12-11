@@ -14,7 +14,7 @@ export default () => ({
   },
 
   drawUseCss(stage: Konva.Stage) {    
-    stage.content.style.backgroundSize = `50px 50px`
+    stage.content.style.backgroundSize = `25px 25px`
     stage.content.style.backgroundImage = `linear-gradient(to right, grey 1px, transparent 1px),linear-gradient(to bottom, grey 1px, transparent 1px)`
   }
 })

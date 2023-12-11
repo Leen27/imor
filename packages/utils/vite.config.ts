@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
     build: {
         lib: {
-            entry: resolve(__dirname, 'utils/index.ts'),
+            entry: resolve(__dirname, './src/index.ts'),
             name: 'cvrts-utils',
             fileName: 'index'
         },
