@@ -7,3 +7,5 @@ export interface PluginT {
 
 import BgGridPlugin from './grid'
 export { BgGridPlugin }
+import StateTool from './stateTool'
+export { StateTool }

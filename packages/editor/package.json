@@ -14,6 +14,7 @@
     "@cvrts/utils": "workspace:*"
   },
   "dependencies": {
-    "konva": "^9.2.3"
+    "konva": "^9.2.3",
+    "stats.js": "^0.17.0"
   }
 }

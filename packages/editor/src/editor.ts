@@ -1,6 +1,6 @@
 import Konva from "konva";
 import type { PluginT } from "./plugins";
-import { BgGridPlugin } from "./plugins";
+import { BgGridPlugin, StateTool } from "./plugins";
 import { Invoker } from "./command";
 
 /**
@@ -24,7 +24,7 @@ export class Editor {
     this.engine = this.initStage(el);
     const { plugins = [] } = configs || {};
 
-    this.installPlugins(plugins.concat([BgGridPlugin()]));
+    this.installPlugins(plugins.concat([BgGridPlugin(), StateTool()]));
   }
 
   initStage(el: HTMLDivElement) {
@@ -38,6 +38,15 @@ export class Editor {
     });
 
     stage.add(this.dragLayer)
+
+    const layer = new Konva.Layer()
+    stage.add(layer)
+    this.command('ADD_TASK', { layer, config: {
+      id: 'xxxx',
+      x: 300,
+      y: 300,
+      name: 'teset_Test',
+    }})
 
     return stage
   }
