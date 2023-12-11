@@ -26,7 +26,7 @@ type FlowNode = {
     }
     next_flow: {
         task: NextFlowTask[]
-    }[],
+    },
 }
 
 export type Rule = {
@@ -41,96 +41,96 @@ export type Rule = {
 		server_version: string
     }
 
-    using_member_list: Array<{
+    using_member_list: {
         uSystemExpression: {
             $: {
                 values: string
             }
         }
-    }>,
-    rule_comments: string[],
-    max_thread_count: Array<{
+    },
+    rule_comments: string,
+    max_thread_count:{
         $: {
             use_import_exe_list: `${boolean}`,
             count: `${number}`
         }
-    }>,
-    max_divide_count: Array<{
+    },
+    max_divide_count: {
         $: {
             count: `${number}`
         }
-    }>,
-    db_transaction_mode: Array<{
+    },
+    db_transaction_mode: {
         $: {
             mode: string
         }
-    }>,
-    startable_ignore: Array<{
+    },
+    startable_ignore: {
         $: {
             mode: `${boolean}`
         }
-    }>,
-    endable_ignore: Array<{
+    },
+    endable_ignore: {
         $: {
             mode: `${boolean}`
         }
-    }>,
-    execute_rulecall_thread: Array<{
+    },
+    execute_rulecall_thread: {
         $: {
             mode: `${boolean}`
         }
-    }>,
-    execute_rtdread_thread: Array<{
+    },
+    execute_rtdread_thread: {
         $: {
             mode: `${boolean}`
         }
-    }>,
-    execute_oplread_thread: Array<{
+    },
+    execute_oplread_thread: {
         $: {
             mode: `${boolean}`
         }
-    }>,
-    execute_splunkread_thread: Array<{
+    },
+    execute_splunkread_thread: {
         $: {
             mode: `${boolean}`
         }
-    }>,
-    rule_description: string[],
-    use_nvl: Array<{
+    },
+    rule_description: string,
+    use_nvl: {
         $: {
             use_integer: `${boolean}`,
             integer: `${number}`,
             use_double: `${boolean}`,
             double: `${number}`
         }
-    }>,
-    parameters: Array<{
+    },
+    parameters: {
         $: {
             type: string
         },
         parameter: Array<{
-            _: string
+            '#text': string
             $: {
                 name: string
                 type: string
                 default: string
             }
         }>
-    }>,
-    global_variable: Array<{
+    },
+    global_variable: {
         variable: Array<{
-            _: string
+            '#text': string
             $: {
                 name: string,
                 type: string,
                 desc: string,
             }
         }>
-    }>,
+    },
     main_process: {
-        flow: FlowNode[]
-    }[],
-    flow_summary: string[],
+        flow: Record<string, FlowNode>
+    },
+    flow_summary: string,
     comments: {
         comment: {
             $: {
@@ -148,21 +148,21 @@ export type Rule = {
                 linkedtask: string
             }
         }[],
-		subrule_manager: string[],
-		grouprule_manager: string[],
-		histories: {
-			synopsis: string[],
-			history: {
-                _: string,
-                $: {
-                    user: string,
-                    action: string,
-                    date: string,
-                    version_info: string,
-                    comment: string
-                }[]
+    },
+    subrule_manager: string[],
+    grouprule_manager: string[],
+    histories: {
+        synopsis: string[],
+        history: {
+            '#text': string,
+            $: {
+                user: string,
+                action: string,
+                date: string,
+                version_info: string,
+                comment: string
+            }[]
 
-            }[],
-		}[],
-    }[]
+        }[],
+    }[],
 } 
