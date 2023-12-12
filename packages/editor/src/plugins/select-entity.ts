@@ -17,6 +17,8 @@ export default () => ({
   install(engine: Engine): void {
     let startLayer: Konva.Layer | null = null;
     let dragNode: TaskNode | null = null
+    let selectNode: TaskNode | null = null
+
     const updateLine = throttle(20, () => {
         if (dragNode) {
             const links = engine.getLinks(dragNode)
@@ -41,6 +43,9 @@ export default () => ({
         if (dragNode) {
             dragNode.moveTo(startLayer);
             dragNode.stopDrag()
+            selectNode?.unSelect()
+            dragNode?.select()
+            selectNode = dragNode
             dragNode = null
         }
     });
