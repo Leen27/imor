@@ -6,10 +6,20 @@ export default () => ({
   install(stage: Konva.Stage): void {
     const el = stage.container()
     this.drawUseCss(el)
-    stage.on('dragmove', function () {
-        el.style.backgroundPositionX = `${stage.position().x}px`
-        el.style.backgroundPositionY = `${stage.position().y}px`
-    });
+    var scrollContainer = document.getElementById('scroll-container');
+    const repositionStage = () => {
+        if (!scrollContainer) return
+        var dx = scrollContainer.scrollLeft;
+        var dy = scrollContainer.scrollTop;
+        stage.container().style.transform =
+        'translate(' + dx + 'px, ' + dy + 'px)';
+        stage.x(-dx);
+        stage.y(-dy);
+        el.style.backgroundPositionX = `${-dx}px`
+        el.style.backgroundPositionY = `${-dy}px`
+    }
+    scrollContainer?.addEventListener('scroll', repositionStage);
+    repositionStage();
   },
 
   drawUseCss(el: HTMLDivElement ) {    

@@ -491,6 +491,10 @@ const XMLdata = `
       })
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div id="editor"></div>
+<div id="scroll-container">
+   <div id="large-container">
+   <div id="editor"></div>
+   </div>
+</div>
 `
 new Editor(document.querySelector<HTMLDivElement>('#editor')!)

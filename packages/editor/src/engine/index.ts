@@ -13,7 +13,6 @@ export class Engine extends Konva.Stage {
             container: el,
             width: width,
             height: height,
-            draggable: true,
         });
     
         this.add(this.dragLayer)

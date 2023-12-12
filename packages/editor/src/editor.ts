@@ -34,12 +34,12 @@ export class Editor {
 
     const data = []
     
-    for(let j = 0; j < 60; j++) {
-      for(let i = 0; i < 60; i++) {
+    for(let j = 0; j < 40; j++) {
+      for(let i = 0; i < 40; i++) {
         data.push({
           id: 'xxxx' + 1000 * Math.random(),
-          x: i * 50,
-          y: j * 50,
+          x: 3000 * Math.random(),
+          y: 3000 * Math.random(),
           name: 'teset_Test' + 1000 * Math.random(),
           icon: ''
         })
