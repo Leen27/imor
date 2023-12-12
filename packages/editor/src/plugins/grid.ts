@@ -1,9 +1,9 @@
-import Konva from "konva";
+import type { Engine } from "../engine";
 
 export default () => ({
   name: 'editor-bg-grid',
 
-  install(stage: Konva.Stage): void {
+  install(stage: Engine): void {
     const el = stage.container()
     this.drawUseCss(el)
     var scrollContainer = el.parentElement?.parentElement
@@ -11,7 +11,7 @@ export default () => ({
         if (!scrollContainer) return
         var dx = scrollContainer.scrollLeft;
         var dy = scrollContainer.scrollTop;
-        stage.container().style.transform =
+        el.style.transform =
         'translate(' + dx + 'px, ' + dy + 'px)';
         stage.x(-dx);
         stage.y(-dy);

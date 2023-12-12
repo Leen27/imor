@@ -1,3 +1,4 @@
+import 'virtual:uno.css'
 import Konva from 'konva'
 import BgGridPlugin from './grid'
 export { BgGridPlugin }
@@ -7,11 +8,7 @@ import SelectEntity from './select-entity'
 export { SelectEntity }
 import FilePlugin from './file'
 export { FilePlugin }
-import type { Editor } from '..'
+import ContextMenuPlugin from './context-menu'
+export { ContextMenuPlugin }
 export * from './file'
-
-export interface PluginT {
-    name: string
-    install(stage: Konva.Stage, editor: Editor): void
-}
-
+export type { PluginT } from './plugin'

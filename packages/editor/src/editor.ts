@@ -1,29 +1,31 @@
-import Konva from "konva";
-import type { PluginT } from "./plugins";
-import { BgGridPlugin, StateTool, SelectEntity, FilePlugin } from "./plugins";
-import { Invoker } from "./command";
-import { Engine } from "./engine";
+import Konva from 'konva'
+import type { PluginT } from './plugins'
+import { BgGridPlugin, StateTool, SelectEntity, FilePlugin, ContextMenuPlugin } from './plugins'
+import { Invoker } from './command'
+import { Engine } from './engine'
 
 /**
  * 编辑器配置
  */
 type EditorConfigT = {
-  plugins: Array<PluginT>;
-};
+  plugins: Array<PluginT>
+}
 
 /**
  * 规则编辑器
  * @constructor
  */
 export class Editor {
-  engine!: Engine;
+  engine!: Engine
   invoker: Invoker = new Invoker({})
   plugins: Array<PluginT> = []
 
   constructor(private el: HTMLDivElement, configs?: EditorConfigT) {
-    const { plugins = [] } = configs || {};
+    const { plugins = [] } = configs || {}
     this.initEngine(el)
-    this.installPlugins(plugins.concat([BgGridPlugin(), StateTool(), SelectEntity(), FilePlugin()]));
+    this.installPlugins(
+      plugins.concat([BgGridPlugin(), StateTool(), SelectEntity(), FilePlugin(), ContextMenuPlugin()])
+    )
   }
 
   initEngine(el: HTMLDivElement) {
@@ -33,12 +35,12 @@ export class Editor {
   }
 
   getContainerElement() {
-    return this.el;
+    return this.el
   }
 
   installPlugins(plugins: Array<PluginT> = []) {
     for (let i = 0; i < plugins.length; i++) {
-      plugins[i].install(this.engine, this);
+      plugins[i].install(this.engine, this)
     }
   }
 

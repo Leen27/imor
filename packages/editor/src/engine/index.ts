@@ -3,6 +3,7 @@ import { getPoints } from '../utils/calc-link'
 import { TaskLink, TaskNode } from '../entity'
 
 export class Engine extends Konva.Stage {
+  domContainer!: HTMLDivElement
   dragLayer: Konva.Layer = new Konva.Layer()
   linkLayer: Konva.Layer = new Konva.Layer()
   private _nodeCount = 0
@@ -27,6 +28,7 @@ export class Engine extends Konva.Stage {
       height: height
     })
 
+    this.domContainer = container as HTMLDivElement
     this.add(this.linkLayer)
     this.add(this._layer)
     this.dragLayer.zIndex(1)
@@ -35,6 +37,7 @@ export class Engine extends Konva.Stage {
 
   addTaskNode(taskNode: TaskNode): this {
     this._layer.add(taskNode)
+    // taskNode.cache()
     this._nodeCount++
     if (this._nodeCount >= 1000) {
       this._nodeCount = 0
