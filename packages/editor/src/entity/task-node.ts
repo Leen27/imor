@@ -50,7 +50,8 @@ export class TaskNode extends Konva.Group {
       y: NODE_HEIGHT * 1.2,
       width: NODE_WIDTH * 2,
       align: 'center',
-      listening: false
+      listening: false,
+      fontSize: 10
     })
     super.add(this.taskName)
 
