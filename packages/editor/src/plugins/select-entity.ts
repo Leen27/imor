@@ -3,14 +3,7 @@ import type { Engine } from "../engine";
 import type { TaskLink, TaskNode } from "../entity";
 import { throttle } from "@cvrts/utils";
 import { isEngine } from "../utils/is";
-
-function getTaskNode(shape: any): TaskNode | null {
-    if(!shape) return null
-    if(shape.__isTask) return shape
-    if(shape.parent?.__isTask) return shape.parent
-
-    return null
-}
+import { getTaskNode } from '../utils/node'
 
 export default () => ({
   name: 'select-entity',
@@ -27,9 +20,22 @@ export default () => ({
         }
     })
 
+    const doSelectNode = (node: TaskNode) => {
+        selectNode?.unSelect()
+        node?.select()
+        selectNode = node
+        dragNode = null
+    }
+
     engine.on('mousedown', function (evt) {
         var shape = evt.target;
         const taskNode = getTaskNode(shape)
+
+        if (taskNode && evt.evt?.button === 2) {
+            doSelectNode(taskNode)
+            return
+        }
+
         if (taskNode) {
             startLayer = taskNode.getLayer();
             taskNode.moveTo(engine.dragLayer);
@@ -49,10 +55,7 @@ export default () => ({
         if (dragNode) {
             dragNode.moveTo(startLayer);
             dragNode.stopDrag()
-            selectNode?.unSelect()
-            dragNode?.select()
-            selectNode = dragNode
-            dragNode = null
+            doSelectNode(dragNode)
         }
     });
   },
