@@ -2,6 +2,7 @@ import Konva from "konva";
 import type { Engine } from "../engine";
 import type { TaskLink, TaskNode } from "../entity";
 import { throttle } from "@cvrts/utils";
+import { isEngine } from "../utils/is";
 
 function getTaskNode(shape: any): TaskNode | null {
     if(!shape) return null
@@ -35,6 +36,11 @@ export default () => ({
             taskNode.startDrag();
             dragNode = taskNode
         }
+
+        if (isEngine(shape)) {
+            selectNode?.unSelect()
+            dragNode = null
+        }        
     });
 
     engine.on('dragmove', updateLine)

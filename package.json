@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "editor:dev": "pnpm --filter @cvrts/editor run dev",
-    "editor:build": "pnpm --filter @cvrts/editor run build"
+    "editor:build": "pnpm --filter @cvrts/editor run build",
+    "utils:build": "pnpm --filter @cvrts/utils run build",
+    "core:build": "pnpm --filter @cvrts/core run build"
   },
   "keywords": [],
   "author": "",
