@@ -1,0 +1,17 @@
+{
+  "extends": "@cvrts/shared/configs/tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "rootDir": "src",
+    "outDir": "types",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "noEmit": false,
+    "composite": true
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
