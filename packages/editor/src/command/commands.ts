@@ -1,5 +1,4 @@
 import { TaskNode, TaskNodeConfig } from '../entity'
-import { Engine } from '../engine'
 import { Editor } from '../editor'
 export interface ICommand {
   execute(...args: any): Promise<any>
@@ -7,6 +6,28 @@ export interface ICommand {
 }
 
 export default {
+  TEST_TASK_NODE_DATA: {
+    execute() {
+      const data: any = []
+    
+      for(let j = 0; j < 20; j++) {
+        for(let i = 0; i < 20; i++) {
+          data.push({
+            id: 'xxxx' + 1000 * Math.random(),
+            x: 1000  * Math.random(),
+            y: 1000 * Math.random(),
+            name: 'teset_Test' + 1000 * Math.random(),
+            icon: ''
+          })
+        }
+      }
+
+      return Promise.resolve(data)
+    },
+    undo() {
+      return Promise.resolve()
+    }
+  },
   ADD_TASK: {
     execute: function (editor: Editor , { config }: { config: TaskNodeConfig | TaskNodeConfig[] }) {
       const configs = Array.isArray(config) ? config : [config]

@@ -7,10 +7,20 @@ export class Engine extends Konva.Stage {
     private _layer = new Konva.Layer()
 
     constructor(el: HTMLDivElement) {
-        const width = el.clientWidth;
-        const height = el.clientHeight;
+        el.innerHTML = `
+        <div id="cvrts-scroll-container">
+          <div id="cvrts-large-container">
+            <div id="cvrts-view"></div>
+          </div>
+        </div>
+      `
+        const container = el.querySelector('#cvrts-scroll-container')
+        const viewContainer = el.querySelector('#cvrts-view')
+        if (!container) return
+        const width = container.clientWidth;
+        const height = container.clientHeight;
         super({
-            container: el,
+            container: viewContainer as HTMLDivElement,
             width: width,
             height: height,
         });

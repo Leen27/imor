@@ -6,7 +6,7 @@ export default () => ({
   install(stage: Konva.Stage): void {
     const el = stage.container()
     this.drawUseCss(el)
-    var scrollContainer = document.getElementById('scroll-container');
+    var scrollContainer = el.parentElement?.parentElement
     const repositionStage = () => {
         if (!scrollContainer) return
         var dx = scrollContainer.scrollLeft;
