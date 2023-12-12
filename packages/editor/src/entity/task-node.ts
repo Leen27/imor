@@ -16,6 +16,11 @@ export interface TaskNodeConfig {
 }
 
 export class TaskNode extends Konva.Group {
+  __isTask = true
+  taskIcon: Konva.Image
+  taskName: Konva.Text
+  bgRect: Konva.Rect
+
   constructor(config: TaskNodeConfig) {
     const { x = NODE_WIDTH, y = NODE_HEIGHT, stroke = '#000', fill = '#fff', name = '', icon = '' } = config
     super({
@@ -26,7 +31,7 @@ export class TaskNode extends Konva.Group {
       draggable: true
     })
 
-    const bg = new Konva.Rect({
+    this.bgRect = new Konva.Rect({
       width: NODE_WIDTH,
       height: NODE_HEIGHT,
       fill,
@@ -36,23 +41,22 @@ export class TaskNode extends Konva.Group {
       listening: false
     })
 
-    super.add(bg)
+    super.add(this.bgRect)
 
-    super.add(
-      new Konva.Text({
-        text: name,
-        x: -NODE_WIDTH / 2,
-        y: NODE_HEIGHT * 1.2,
-        width: NODE_WIDTH * 2,
-        align: 'center',
-        listening: false
-      })
-    )
+    this.taskName = new Konva.Text({
+      text: name,
+      x: -NODE_WIDTH / 2,
+      y: NODE_HEIGHT * 1.2,
+      width: NODE_WIDTH * 2,
+      align: 'center',
+      listening: false
+    })
+    super.add(this.taskName)
 
     var wabbitTexture = new Image();
     wabbitTexture.src = 'https://konvajs.org/assets/bunny.png';
 
-    const iconTexture = new Konva.Image({
+    this.taskIcon = new Konva.Image({
       image: wabbitTexture,
       x: NODE_WIDTH * 0.1,
       y: NODE_HEIGHT * 0.1,
@@ -60,8 +64,26 @@ export class TaskNode extends Konva.Group {
       height: NODE_HEIGHT * 0.8,
       transformsEnabled: 'position',
       perfectDrawEnabled: false,
+      listening: false
     })
 
-    super.add(iconTexture)
+    super.add(this.taskIcon)
+
+    const mask = new Konva.Rect({
+      width: NODE_WIDTH,
+      height: NODE_HEIGHT,
+      fill: undefined,
+      stroke: undefined,
+    })
+
+    super.add(mask)
+  }
+
+  select() {
+    this.bgRect.fill('#FD8041')
+  }
+
+  unSelect() {
+    this.bgRect.fill('#FFF')
   }
 }

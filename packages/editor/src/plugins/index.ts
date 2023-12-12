@@ -9,3 +9,5 @@ import BgGridPlugin from './grid'
 export { BgGridPlugin }
 import StateTool from './stateTool'
 export { StateTool }
+import SelectEntity from './select-entity'
+export { SelectEntity }

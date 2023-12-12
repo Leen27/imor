@@ -2,6 +2,7 @@ import type { ICommand } from "./commands"
 import commands from "./commands"
 import { isString } from '@cvrts/utils'
 import { ERROR_CODE, throwEditorErr } from '../error'
+import { Editor } from "src"
 type StackData = {
     command: ICommand
     args: any
@@ -24,7 +25,7 @@ export class Invoker {
     this._max = max
   }
   
-  execute(command: ICommand | string, ...args: any) {
+  execute(command: ICommand | string, editor: Editor, ...args: any) {
     if (this._isLocked) {
       return Promise.reject('当前有未完成的指令，无法执行新指令');
     }
@@ -35,7 +36,7 @@ export class Invoker {
       command = _cmd
     }
 
-    return this._invokeExecution(command, ...args)
+    return this._invokeExecution(command, editor, ...args)
   }
 
   undo() {
@@ -60,11 +61,11 @@ export class Invoker {
     return promise
   }
   
-  async _invokeExecution(command: ICommand, ...args: any) {
+  async _invokeExecution(command: ICommand, editor: Editor, ...args: any) {
     this.lock()
     
     try {
-      const res = await command.execute(...args)
+      const res = await command.execute(editor, ...args)
       this.pushUndoStack({
         command,
         args

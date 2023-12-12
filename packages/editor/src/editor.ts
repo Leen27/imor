@@ -1,7 +1,9 @@
 import Konva from "konva";
 import type { PluginT } from "./plugins";
-import { BgGridPlugin, StateTool } from "./plugins";
+import { BgGridPlugin, StateTool, SelectEntity } from "./plugins";
 import { Invoker } from "./command";
+import { Engine } from "./engine";
+import { TaskNode } from "./entity";
 
 /**
  * 编辑器配置
@@ -15,40 +17,36 @@ type EditorConfigT = {
  * @constructor
  */
 export class Editor {
-  engine: Konva.Stage;
+  engine!: Engine;
   plugins: Array<PluginT> = []
-  dragLayer: Konva.Layer = new Konva.Layer()
   invoker: Invoker = new Invoker({})
 
   constructor(private el: HTMLDivElement, configs?: EditorConfigT) {
-    this.engine = this.initStage(el);
     const { plugins = [] } = configs || {};
-
-    this.installPlugins(plugins.concat([BgGridPlugin(), StateTool()]));
+    this.initEngine(el)
+    this.installPlugins(plugins.concat([BgGridPlugin(), StateTool(), SelectEntity()]));
   }
 
-  initStage(el: HTMLDivElement) {
-    const width = el.clientWidth;
-    const height = el.clientHeight;
-    const stage = new Konva.Stage({
-      container: el,
-      width: width,
-      height: height,
-      draggable: true,
-    });
-
-    stage.add(this.dragLayer)
-
+  initEngine(el: HTMLDivElement) {
+    this.engine = new Engine(el)
     const layer = new Konva.Layer()
-    stage.add(layer)
-    this.command('ADD_TASK', { layer, config: {
-      id: 'xxxx',
-      x: 300,
-      y: 300,
-      name: 'teset_Test',
-    }})
+    this.engine.add(layer)
 
-    return stage
+    const data = []
+    
+    for(let j = 0; j < 60; j++) {
+      for(let i = 0; i < 60; i++) {
+        data.push({
+          id: 'xxxx' + 1000 * Math.random(),
+          x: i * 50,
+          y: j * 50,
+          name: 'teset_Test' + 1000 * Math.random(),
+          icon: ''
+        })
+      }
+    }
+
+    this.command('ADD_TASK', { config: data })
   }
 
   getContainerElement() {
@@ -62,6 +60,6 @@ export class Editor {
   }
 
   command(commandName: string, ...args: any) {
-    return this.invoker.execute(commandName, ...args)
+    return this.invoker.execute(commandName, this, ...args)
   }
 }

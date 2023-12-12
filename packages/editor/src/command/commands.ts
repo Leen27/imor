@@ -1,8 +1,6 @@
-import Konva from 'konva'
 import { TaskNode, TaskNodeConfig } from '../entity'
-/**
- * The Command interface declares a method for executing a command.
- */
+import { Engine } from '../engine'
+import { Editor } from '../editor'
 export interface ICommand {
   execute(...args: any): Promise<any>
   undo(...args: any): Promise<any>
@@ -10,12 +8,17 @@ export interface ICommand {
 
 export default {
   ADD_TASK: {
-    execute: function ({ layer, config }: { stage: Konva.Stage; layer: Konva.Layer; config: TaskNodeConfig }) {
-      layer.add(
-        new TaskNode({
-          ...config
-        })
-      )
+    execute: function (editor: Editor , { config }: { config: TaskNodeConfig | TaskNodeConfig[] }) {
+      const configs = Array.isArray(config) ? config : [config]
+
+      for(let i = 0; i < configs.length; i++) {
+        editor.engine.addTaskNode(
+          new TaskNode({
+            ...configs[i]
+          })
+        )
+      }
+
       return Promise.resolve()
     },
     undo() {
