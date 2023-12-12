@@ -18,8 +18,8 @@ type EditorConfigT = {
  */
 export class Editor {
   engine!: Engine;
-  plugins: Array<PluginT> = []
   invoker: Invoker = new Invoker({})
+  plugins: Array<PluginT> = []
 
   constructor(private el: HTMLDivElement, configs?: EditorConfigT) {
     const { plugins = [] } = configs || {};

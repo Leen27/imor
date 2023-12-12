@@ -1,6 +1,7 @@
 import Konva from "konva";
-import type { Engine } from "src/engine";
-import type { TaskNode } from "src/entity";
+import type { Engine } from "../engine";
+import type { TaskLink, TaskNode } from "../entity";
+import { throttle } from "@cvrts/utils";
 
 function getTaskNode(shape: any): TaskNode | null {
     if(!shape) return null
@@ -15,23 +16,32 @@ export default () => ({
 
   install(engine: Engine): void {
     let startLayer: Konva.Layer | null = null;
+    let dragNode: TaskNode | null = null
+    const updateLine = throttle(16, () => {
+        if (dragNode) {
+            const links = engine.getLinks(dragNode)
+            links.forEach((line) => (line as TaskLink).updateLine())
+        }
+    })
+
     engine.on('mousedown', function (evt) {
         var shape = evt.target;
-        console.log(shape, 'down')
         const taskNode = getTaskNode(shape)
         if (taskNode) {
             startLayer = taskNode.getLayer();
             taskNode.moveTo(engine.dragLayer);
             taskNode.startDrag();
+            dragNode = taskNode
         }
     });
 
-    engine.on('mouseup', function (evt) {
-        var shape = evt.target;
-        console.log(shape, 'mouseup')
-        const taskNode = getTaskNode(shape)
-        if (taskNode) {
-            taskNode.moveTo(startLayer);
+    engine.on('dragmove', updateLine)
+
+    engine.on('mouseup', function () {
+        if (dragNode) {
+            dragNode.moveTo(startLayer);
+            dragNode.stopDrag()
+            dragNode = null
         }
     });
   },

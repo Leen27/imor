@@ -22,8 +22,9 @@ export class TaskNode extends Konva.Group {
   bgRect: Konva.Rect
 
   constructor(config: TaskNodeConfig) {
-    const { x = NODE_WIDTH, y = NODE_HEIGHT, stroke = '#000', fill = '#fff', name = '', icon = '' } = config
+    const { id, x = NODE_WIDTH, y = NODE_HEIGHT, stroke = '#000', fill = '#fff', name = '', icon = '' } = config
     super({
+      id,
       x,
       y,
       width: NODE_WIDTH,

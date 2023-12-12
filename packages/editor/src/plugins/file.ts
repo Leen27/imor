@@ -1,7 +1,7 @@
 import { useXmlParser } from '@cvrts/utils'
 import { Engine } from '../engine';
 import { Editor } from '../editor';
-import { TaskNodeConfig } from '../entity';
+import { TaskLinkRawConfigs, TaskNodeConfig } from '../entity';
 
 const xml = `
 <?xml version="1.0"?>
@@ -488,6 +488,7 @@ export default () => ({
     const { main_process } = rule
 
     const taskConfigs: TaskNodeConfig[] = []
+    const linkConfigs: TaskLinkRawConfigs[] = []
 
     const taskKeys = Object.keys(main_process.flow)
 
@@ -497,7 +498,7 @@ export default () => ({
 
         for(let j = 0; j < taskList.length; j++) {
             const taskData = taskList[j]
-            const { $ } = taskData
+            const { $, next_flow } = taskData
             const { task_id, name } = $
             const [ x, y, _, __, ] = $.shape.split(/\,\s*/)
             taskConfigs.push({
@@ -507,11 +508,24 @@ export default () => ({
                 name,
                 icon: ''
             })
+
+            if(next_flow?.task) {
+                if (!Array.isArray(next_flow.task)) {
+                    next_flow.task = [next_flow.task]
+                }
+                next_flow.task.forEach(linkData => {
+                    linkConfigs.push({
+                        from: task_id,
+                        to: linkData.$.id
+                    })
+                })
+            }
         }
     }
 
     return {
-        tasks: taskConfigs
+        tasks: taskConfigs,
+        links: linkConfigs
     }
   }
 })
@@ -681,6 +695,6 @@ type FlowNode = {
         isinloop: `${boolean}`
     }
     next_flow: {
-        task: NextFlowTask[]
+        task: NextFlowTask | NextFlowTask[]
     },
 }
