@@ -51,13 +51,10 @@ export class Engine extends Konva.Stage {
   }
 
   getLinks(taskNode: TaskNode) {
-    console.log(taskNode, this.linkLayer, 'tddddddhis.linkLayerthis.linkLayerthis.linkLayerthis.linkLayer')
     const links = this.linkLayer.find((link: any) => {
         return link.toTask === taskNode || link.fromTask === taskNode
     })
-
-    console.log(links, '@@@@')
-
+    
     return links
   }
 

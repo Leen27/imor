@@ -17,7 +17,7 @@ export default () => ({
   install(engine: Engine): void {
     let startLayer: Konva.Layer | null = null;
     let dragNode: TaskNode | null = null
-    const updateLine = throttle(16, () => {
+    const updateLine = throttle(20, () => {
         if (dragNode) {
             const links = engine.getLinks(dragNode)
             links.forEach((line) => (line as TaskLink).updateLine())

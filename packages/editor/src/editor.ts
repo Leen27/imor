@@ -3,7 +3,6 @@ import type { PluginT } from "./plugins";
 import { BgGridPlugin, StateTool, SelectEntity, FilePlugin } from "./plugins";
 import { Invoker } from "./command";
 import { Engine } from "./engine";
-import { TaskNode } from "./entity";
 
 /**
  * 编辑器配置
