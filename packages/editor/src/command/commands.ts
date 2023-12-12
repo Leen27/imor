@@ -1,4 +1,4 @@
-import { TaskLink, TaskLinkConfigs, TaskLinkRawConfigs, TaskNode, TaskNodeConfig } from '../entity'
+import { TaskLink, TaskLinkRawConfigs, TaskNode, TaskNodeConfig } from '../entity'
 import { Editor } from '../editor'
 export interface ICommand {
   execute(...args: any): Promise<any>

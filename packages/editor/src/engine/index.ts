@@ -1,5 +1,4 @@
 import Konva from 'konva'
-import { getPoints } from '../utils/calc-link'
 import { TaskLink, TaskNode } from '../entity'
 
 export class Engine extends Konva.Stage {

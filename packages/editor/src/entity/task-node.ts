@@ -56,7 +56,7 @@ export class TaskNode extends Konva.Group {
     super.add(this.taskName)
 
     var wabbitTexture = new Image();
-    wabbitTexture.src = '/bunny.png';
+    wabbitTexture.src = icon || '/bunny.png';
 
     this.taskIcon = new Konva.Image({
       image: wabbitTexture,

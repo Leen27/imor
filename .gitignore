@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+packages/editor/types/*
+packages/utils/types/*
+packages/core/types/*

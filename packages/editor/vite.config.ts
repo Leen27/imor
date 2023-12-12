@@ -7,8 +7,9 @@ export default defineConfig({
         UnoCSS(),
     ],
     build: {
+        target: 'esnext',
         lib: {
-            entry: resolve(__dirname, 'src/main.ts'),
+            entry: resolve(__dirname, 'src/index.ts'),
             name: 'cvrts-editor',
             fileName: 'index'
         },
