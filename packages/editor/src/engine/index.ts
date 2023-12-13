@@ -17,7 +17,6 @@ export class Engine extends Konva.Stage {
         </div>
       `
     const container = el.querySelector('#cvrts-scroll-container')
-    const largeContainer = el.querySelector('#cvrts-large-container')
     const viewContainer = el.querySelector('#cvrts-view')
     if (!container || !viewContainer) return
     

@@ -32,6 +32,15 @@ importers:
 
   apps/site:
     dependencies:
+      '@cvrts/editor':
+        specifier: workspace:*
+        version: link:../../packages/editor
+      '@cvrts/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
+      '@cvrts/utils':
+        specifier: workspace:*
+        version: link:../../packages/utils
       pinia:
         specifier: ^2.1.7
         version: 2.1.7(typescript@5.2.2)(vue@3.3.11)

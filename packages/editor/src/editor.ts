@@ -52,5 +52,5 @@ export class Editor {
     return this.invoker.execute(commandName, this, ...args)
   }
 
-  async loadData(): Promise<any> {}
+  async loadData(_: string): Promise<any> {}
 }

@@ -1,22 +1,25 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { Editor } from '@cvrts/editor'
+import { onMounted, ref } from 'vue'
+const editorRef = ref(null)
+
+onMounted(() => {
+  if (!editorRef.value) return
+  const editor = new Editor(
+    editorRef.value,
+    {
+        plugins: [
+          // contextConfig
+        ]
+    }
+  )
+})
+
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
+  <div ref="editorRef" id="editor"></div>
   <RouterView />
 </template>
 
@@ -24,6 +27,11 @@ import HelloWorld from './components/HelloWorld.vue'
 header {
   line-height: 1.5;
   max-height: 100vh;
+}
+
+#editor {
+  width: 100%;
+  height: 900px;
 }
 
 .logo {

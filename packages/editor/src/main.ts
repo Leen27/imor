@@ -2,6 +2,7 @@ import './normalize.css'
 import './style.css'
 import { Editor } from './editor'
 // import { EditorEvents } from './events'
+import { xml } from './test-xml'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
    <div id="editor"></div>
@@ -51,7 +52,7 @@ const editor = new Editor(
    }
 )
 
-const { tasks, links } = await editor.loadData()
+const { tasks, links } = await editor.loadData(xml)
 
 editor.command('ADD_TASK', { tasks })
 ?.then(() => {

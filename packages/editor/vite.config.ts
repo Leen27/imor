@@ -14,7 +14,16 @@ export default defineConfig({
             fileName: 'index'
         },
         rollupOptions: {
-            external: []
+            // external: [
+            //     '@cvrts/shared', '@cvrts/utils'
+            // ],
+            output: {
+                // inlineDynamicImports: false,
+                // manualChunks: {
+                //     'render-lib': ['konva', 'stats.js'] 
+                // },
+                // format: 'esm'
+            }
         }
     }
 })
