@@ -10,4 +10,4 @@ export { FilePlugin }
 import ContextMenuPlugin from './context-menu'
 export { ContextMenuPlugin }
 export * from './file'
-export type { PluginT } from './plugin'
+export type { PluginT, PluginCoinfg } from './plugin'

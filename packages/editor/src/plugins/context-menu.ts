@@ -3,10 +3,20 @@ import type { PluginT } from './plugin'
 import { getTaskNode } from '../utils/node'
 import { MouseButton } from '@cvrts/shared/types'
 
+export interface MenuItem {
+  key: string
+  text: string
+  icon?: string
+  onSelect?: (key: string) => void
+  children?: Array<MenuItem>
+}
+
 export default (): PluginT => ({
   name: 'context-menu',
 
-  install(engine: Engine): void {
+  install(engine: Engine, _, config?: {
+    menues: MenuItem[]
+  }): void {
     const content = engine.domContainer
     const contextMenu = document.createElement('div')
     contextMenu.innerHTML = `

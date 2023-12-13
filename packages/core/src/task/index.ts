@@ -11,6 +11,13 @@ export interface Task {}
  */
 export interface StartableTask extends Task {}
 
+export enum StartableTaskEnum {
+    START = 1,
+    DB_READ,
+    FILE_READ,
+    CACHE_READ
+}
+
 /**
  *  Endable Task
  *  End Task,DB Write Task,File Write Task,Cache Write

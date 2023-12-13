@@ -1,14 +1,15 @@
 import Konva from 'konva'
-import type { PluginT } from './plugins'
+import type { PluginT, PluginCoinfg } from './plugins'
 import { BgGridPlugin, StateTool, SelectEntity, FilePlugin, ContextMenuPlugin } from './plugins'
 import { Invoker } from './command'
 import { Engine } from './engine'
+import { partition } from '@cvrts/utils'
 
 /**
  * 编辑器配置
  */
 type EditorConfigT = {
-  plugins: Array<PluginT>
+  plugins: Array<PluginT | PluginCoinfg>
 }
 
 /**
@@ -18,7 +19,7 @@ type EditorConfigT = {
 export class Editor {
   engine!: Engine
   invoker: Invoker = new Invoker({})
-  plugins: Array<PluginT> = []
+  plugins: Array<PluginT | PluginCoinfg> = []
 
   constructor(private el: HTMLDivElement, configs?: EditorConfigT) {
     const { plugins = [] } = configs || {}
@@ -38,9 +39,12 @@ export class Editor {
     return this.el
   }
 
-  installPlugins(plugins: Array<PluginT> = []) {
-    for (let i = 0; i < plugins.length; i++) {
-      plugins[i].install(this.engine, this)
+  installPlugins(plugins: Array<PluginT | PluginCoinfg> = []) {
+    const [creators, configs] = partition(plugins, p => !!p.install)
+    for (let i = 0; i < creators.length; i++) {
+      const plugin = creators[i]
+      const config = configs.filter(c => c.name === plugin.name)
+      plugin.install(this.engine, this, config[0])
     }
   }
 
