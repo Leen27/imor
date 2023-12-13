@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import HelloWorld from './components/HelloWorld.vue'
+import { Button } from '@/components/ui/button'
 </script>
 
 <template>
@@ -12,6 +13,10 @@ import HelloWorld from './components/HelloWorld.vue'
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+  <Button variant="outline">
+    Cancel
+  </Button>
+  <Button>Deploy</Button>
 </template>
 
 <style scoped>
