@@ -24,6 +24,6 @@ export default () => ({
 
   drawUseCss(el: HTMLDivElement ) {    
     el.style.backgroundSize = `25px 25px`
-    el.style.backgroundImage = `linear-gradient(to right, grey 1px, transparent 1px),linear-gradient(to bottom, grey 1px, transparent 1px)`
+    el.style.backgroundImage = `linear-gradient(to right, #ddd 1px, transparent 1px),linear-gradient(to bottom, #ddd 1px, transparent 1px)`
   }
 })

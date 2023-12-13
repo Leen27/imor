@@ -17,8 +17,10 @@ export class Engine extends Konva.Stage {
         </div>
       `
     const container = el.querySelector('#cvrts-scroll-container')
+    const largeContainer = el.querySelector('#cvrts-large-container')
     const viewContainer = el.querySelector('#cvrts-view')
-    if (!container) return
+    if (!container || !viewContainer) return
+    
     const width = container.clientWidth
     const height = container.clientHeight
     super({
@@ -56,7 +58,7 @@ export class Engine extends Konva.Stage {
     const links = this.linkLayer.find((link: any) => {
         return link.toTask === taskNode || link.fromTask === taskNode
     })
-    
+
     return links
   }
 
