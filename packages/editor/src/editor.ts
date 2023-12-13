@@ -1,6 +1,6 @@
 import Konva from 'konva'
 import type { PluginT, PluginCoinfg } from './plugins'
-import { BgGridPlugin, StateTool, SelectEntity, FilePlugin, ContextMenuPlugin } from './plugins'
+import { BgGridPlugin, StateTool, SelectEntity, FilePlugin } from './plugins'
 import { Invoker } from './command'
 import { Engine } from './engine'
 import { partition } from '@cvrts/utils'
@@ -25,7 +25,7 @@ export class Editor {
     const { plugins = [] } = configs || {}
     this.initEngine(el)
     this.installPlugins(
-      plugins.concat([BgGridPlugin(), StateTool(), SelectEntity(), FilePlugin(), ContextMenuPlugin()])
+      plugins.concat([BgGridPlugin(), StateTool(), SelectEntity(), FilePlugin()])
     )
   }
 
