@@ -1,5 +1,5 @@
 {
-  "name": "@cvrts/core",
+  "name": "cvrts",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",

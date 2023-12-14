@@ -12,7 +12,7 @@ import { Button, ContextMenu,
   ContextMenuSub,
   ContextMenuSubContent,
   ContextMenuSubTrigger,
-  ContextMenuTrigger, } from '../lib'
+  ContextMenuTrigger, Box } from '../lib'
 
 const editorRef = ref(null)
 
@@ -22,6 +22,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <Box />
   <div><Button size="lg" variant="link">test button</Button></div>
 
   <ContextMenu>

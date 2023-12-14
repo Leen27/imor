@@ -163,7 +163,7 @@ importers:
     devDependencies:
       '@cvrts/core':
         specifier: workspace:*
-        version: link:../..
+        version: link:../core
       '@cvrts/shared':
         specifier: workspace:*
         version: link:../shared
