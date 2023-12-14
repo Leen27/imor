@@ -17,5 +17,8 @@
   },
   "devDependencies": {
     "@cvrts/shared": "workspace:*"
+  },
+  "dependencies": {
+    "mitt": "^3.0.1"
   }
 }

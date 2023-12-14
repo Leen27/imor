@@ -27,6 +27,6 @@ onMounted(() => {
 <style scoped>
 #editor {
   width: 100%;
-  height: 900px;
+  height: 100vh;
 }
 </style>
