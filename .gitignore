@@ -23,6 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 
-packages/editor/types/*
-packages/utils/types/*
-packages/core/types/*
+tsconfig.tsbuildinfo

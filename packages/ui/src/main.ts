@@ -1,3 +1,4 @@
+// @ts-nocheck
 import './normalize.css'
 import './style.css'
 

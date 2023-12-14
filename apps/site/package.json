@@ -21,7 +21,8 @@
     "vue-router": "^4.2.5",
     "@cvrts/editor": "workspace:*",
     "@cvrts/utils": "workspace:*",
-    "@cvrts/shared": "workspace:*"
+    "@cvrts/shared": "workspace:*",
+    "@cvrts/ui": "workspace:*"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.3.3",
