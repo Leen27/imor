@@ -1,15 +1,9 @@
 {
-    "extends": "@cvrts/shared/configs/tsconfig.base.json",
+    "extends": "@cvrts/shared/configs/tsconfig.lib.json",
     "compilerOptions": {
       "baseUrl": ".",
       "rootDir": "src",
       "outDir": "types",
-      "composite": true,
-      "declaration": true,
-      "emitDeclarationOnly": true,
-      "stripInternal": true,
-      "noEmit": false,
-      "allowJs": true,
     },
     "include": ["src"],
     "exclude": ["vite.config.ts", "src/**/__test__/*", "./types/**/*", "./dist/**/*"]
