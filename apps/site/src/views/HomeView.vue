@@ -1,29 +1,14 @@
 <script setup lang="ts">
-import { Editor } from '@cvrts/editor'
-import { onMounted, ref } from 'vue'
-import { Box } from '@cvrts/ui'
+import { ref } from 'vue'
+import { Editor, Box } from '@cvrts/ui'
 
-const editorRef = ref(null)
 const configPanelRef = ref(null)
-
-onMounted(() => {
-  if (!editorRef.value) return
-  const editor = new Editor(
-    editorRef.value,
-    {
-        plugins: [
-          // contextConfig
-        ]
-    }
-  )
-})
-
 </script>
 
 <template>
   <main>
     <Box>
-      <div ref="editorRef" id="editor"></div>
+      <Editor />
     </Box>
     <Box>
       <div ref="configPanelRef" id="config-panel"></div>
