@@ -20,6 +20,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^4.5.2
         version: 4.5.2(vite@5.0.8)(vue@3.3.11)
+      '@vue/tsconfig':
+        specifier: ^0.4.0
+        version: 0.4.0
       autoprefixer:
         specifier: ^10.4.16
         version: 10.4.16(postcss@8.4.32)
@@ -1553,7 +1556,7 @@ packages:
     dependencies:
       '@babel/parser': 7.23.6
       '@vue/shared': 3.3.11
-      estree-walker: 2.0.2
+      estree-walker: r2.cnpmjs.org/estree-walker@2.0.2
       source-map-js: 1.0.2
 
   /@vue/compiler-dom@3.3.11:
@@ -1647,7 +1650,7 @@ packages:
       '@babel/parser': 7.23.6
       '@vue/compiler-core': 3.3.11
       '@vue/shared': 3.3.11
-      estree-walker: 2.0.2
+      estree-walker: r2.cnpmjs.org/estree-walker@2.0.2
       magic-string: 0.30.5
 
   /@vue/reactivity@3.3.11:
@@ -2322,6 +2325,7 @@ packages:
 
   /estree-walker@2.0.2:
     resolution: {integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==}
+    dev: true
 
   /eventemitter2@6.4.7:
     resolution: {integrity: sha512-tYUSVOGeQPKt/eC1ABfhHy5Xd96N3oIijJvN3O9+TsC28T5V9yX9oEfEK5faP0EFSNVOG97qtAS68GBrQB2hDg==}

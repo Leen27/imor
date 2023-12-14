@@ -1,5 +1,5 @@
 {
-  "extends": "@cvrts/shared/configs/tsconfig.lib.json",
+  "extends": "@cvrts/shared/configs/tsconfig.vue.json",
   "compilerOptions": {
     "baseUrl": ".",
     "rootDir": "lib",
@@ -8,6 +8,6 @@
       "@/*": ["./lib/*"]
     }
   },
-  "include": ["src", "lib"],
-  "exclude": ["src/**/__tests__/*", "src/**/*.test.ts", "src/main.ts", "src/test-xml.ts"],
+  "include": ["src", "lib", "env.d.ts", "lib/**/*", "lib/**/*.vue"],
+  "exclude": ["src/**/__tests__/*", "src/**/*.test.ts", "src/main.ts", "src/test-xml.ts"]
 }
