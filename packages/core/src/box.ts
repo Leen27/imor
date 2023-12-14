@@ -1,5 +1,10 @@
 import mitt, { type Emitter, EventType } from 'mitt'
 
+/**
+ * 一个容器组件
+ * 1. 事件订阅者同时也是发布者
+ * 2. 一个有限状态机
+ */
 export class Box implements Emitter<Record<EventType, unknown>>{
     private _mitt = mitt()
     public on: typeof this._mitt.on

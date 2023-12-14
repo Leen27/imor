@@ -20,7 +20,7 @@ export default defineConfig({
         },
         rollupOptions: {
             external: [
-                'vue'
+                'vue', '@cvrts/shared', '@cvrts/utils', '@cvrts/core'
             ],
             output: {
                 // inlineDynamicImports: false,

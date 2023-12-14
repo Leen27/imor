@@ -161,6 +161,9 @@ importers:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.3.6)
     devDependencies:
+      '@cvrts/core':
+        specifier: workspace:*
+        version: link:../..
       '@cvrts/shared':
         specifier: workspace:*
         version: link:../shared

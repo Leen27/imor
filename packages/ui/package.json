@@ -19,6 +19,7 @@
   "devDependencies": {
     "@cvrts/shared": "workspace:*",
     "@cvrts/utils": "workspace:*",
+    "@cvrts/core": "workspace:*",
     "add": "^2.0.6",
     "vue": "^3.3.10"
   },
@@ -31,6 +32,9 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "peerDependencies": {
+    "@cvrts/shared": "workspace:*",
+    "@cvrts/utils": "workspace:*",
+    "@cvrts/core": "workspace:*",
     "add": "^2.0.6",
     "vue": "^3.3.10"
   }
