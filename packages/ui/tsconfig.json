@@ -8,6 +8,6 @@
       "@/*": ["./lib/*"]
     }
   },
-  "include": ["src", "lib", "env.d.ts", "lib/**/*", "lib/**/*.vue"],
+  "include": ["src", "lib", "env.d.ts", "lib/**/*.ts", "lib/**/*.vue"],
   "exclude": ["src/**/__tests__/*", "src/**/*.test.ts", "./tsconfig.tsbuildinfo"]
 }

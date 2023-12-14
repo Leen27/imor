@@ -164,6 +164,9 @@ importers:
       '@cvrts/core':
         specifier: workspace:*
         version: link:../core
+      '@cvrts/editor':
+        specifier: workspace:*
+        version: link:../editor
       '@cvrts/shared':
         specifier: workspace:*
         version: link:../shared

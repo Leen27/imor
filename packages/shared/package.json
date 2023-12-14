@@ -11,7 +11,7 @@
   },
   "exports": {
     "./types": {
-      "import": "./types/index.ts"
+      "import": "./share-types/index.ts"
     },
     "./configs/*.json": "./configs/*.json",
     "./configs/*": {
