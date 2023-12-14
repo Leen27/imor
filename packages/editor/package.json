@@ -4,6 +4,10 @@
   "version": "0.0.0",
   "description": "Rule Editor 规则编辑器",
   "type": "module",
+  "files": [
+    "dist",
+    "types"
+  ],
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./types/editor.d.ts",

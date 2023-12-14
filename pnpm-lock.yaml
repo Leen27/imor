@@ -56,6 +56,9 @@ importers:
       '@cvrts/shared':
         specifier: workspace:*
         version: link:../../packages/shared
+      '@cvrts/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
       '@cvrts/utils':
         specifier: workspace:*
         version: link:../../packages/utils

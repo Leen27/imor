@@ -9,7 +9,8 @@
     "utils:build": "pnpm --filter @cvrts/utils run build",
     "core:build": "pnpm --filter @cvrts/core run build",
     "ui:dev": "pnpm --filter @cvrts/ui run dev",
-    "ui:build": "pnpm --filter @cvrts/ui run build"
+    "ui:build": "pnpm --filter @cvrts/ui run build",
+    "site:dev": "pnpm --filter site run dev"
   },
   "keywords": [],
   "author": "",
