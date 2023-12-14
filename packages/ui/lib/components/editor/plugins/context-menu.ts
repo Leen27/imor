@@ -17,7 +17,7 @@ export default (): PluginT => ({
 
   install(engine: Engine): void {
     engine.on('contextmenu', (e) => {
-      e.evt.preventDefault();
+      // e.evt.preventDefault();
 
       const shape = e.target
 

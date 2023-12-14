@@ -1,6 +1,7 @@
 <template>
-  <div ref="editorRef"></div>
-  <ConextMenu />
+  <ConextMenu>
+    <div ref="editorRef"></div>
+  </ConextMenu>
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
