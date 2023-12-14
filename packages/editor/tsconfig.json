@@ -2,9 +2,9 @@
   "extends": "@cvrts/shared/configs/tsconfig.lib.json",
   "compilerOptions": {
     "baseUrl": ".",
-    "rootDir": "src",
+    "rootDir": "lib",
     "outDir": "types",
   },
-  "include": ["src"],
+  "include": ["src", "lib"],
   "exclude": ["src/**/__tests__/*", "src/**/*.test.ts", "src/main.ts", "src/test-xml.ts"],
 }

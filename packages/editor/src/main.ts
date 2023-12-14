@@ -1,6 +1,6 @@
 import './normalize.css'
 import './style.css'
-import { Editor } from './editor'
+import { Editor } from '../lib/editor'
 // import { EditorEvents } from './events'
 import { xml } from './test-xml'
 

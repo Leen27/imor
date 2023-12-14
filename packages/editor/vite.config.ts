@@ -9,7 +9,7 @@ export default defineConfig({
     build: {
         target: 'esnext',
         lib: {
-            entry: resolve(__dirname, 'src/index.ts'),
+            entry: resolve(__dirname, 'lib/index.ts'),
             name: 'cvrts-editor',
             fileName: 'index'
         },

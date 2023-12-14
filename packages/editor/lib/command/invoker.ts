@@ -2,7 +2,7 @@ import type { ICommand } from "./commands"
 import commands from "./commands"
 import { isString } from '@cvrts/utils'
 import { ERROR_CODE, throwEditorErr } from '../error'
-import { Editor } from "src"
+import { Editor } from "../"
 type StackData = {
     command: ICommand
     args: any
