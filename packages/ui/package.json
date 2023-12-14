@@ -14,8 +14,20 @@
   },
   "devDependencies": {
     "@cvrts/shared": "workspace:*",
-    "@cvrts/utils": "workspace:*"
+    "@cvrts/utils": "workspace:*",
+    "add": "^2.0.6",
+    "vue": "^3.3.10"
   },
   "dependencies": {
+    "@radix-icons/vue": "^1.0.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "radix-vue": "^1.2.4",
+    "tailwind-merge": "^2.1.0",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "peerDependencies": {
+    "add": "^2.0.6",
+    "vue": "^3.3.10"
   }
 }
