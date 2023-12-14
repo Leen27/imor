@@ -22,10 +22,11 @@ onMounted(() => {
 </script>
 
 <template>
-  <Box />
-  <div><Button size="lg" variant="link">test button</Button></div>
-
-  <ContextMenu>
+  <Box name="box1">
+    <div><Button size="lg" variant="link">test button</Button></div>
+  </Box>
+  <Box name="box2">
+    <ContextMenu>
     <ContextMenuTrigger class="flex h-[150px] w-[300px] items-center justify-center rounded-md border border-dashed text-sm">
       Right click here
     </ContextMenuTrigger>
@@ -78,6 +79,7 @@ onMounted(() => {
       </ContextMenuRadioGroup>
     </ContextMenuContent>
   </ContextMenu>
+  </Box>
 </template>
 
 <style scoped>

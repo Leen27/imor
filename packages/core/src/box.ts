@@ -1,4 +1,5 @@
 import mitt, { type Emitter, EventType } from 'mitt'
+const _mitt = mitt()
 
 /**
  * 一个容器组件
@@ -6,17 +7,15 @@ import mitt, { type Emitter, EventType } from 'mitt'
  * 2. 一个有限状态机
  */
 export class Box implements Emitter<Record<EventType, unknown>>{
-    private _mitt = mitt()
-    public on: typeof this._mitt.on
-    public off: typeof this._mitt.off
-    public emit: typeof this._mitt.emit
-    public all: typeof this._mitt.all
+    public on: typeof _mitt.on
+    public off: typeof _mitt.off
+    public emit: typeof _mitt.emit
+    public all: typeof _mitt.all
 
     constructor() {
-        this._mitt = mitt()
-        this.on = this._mitt.on
-        this.off = this._mitt.off
-        this.emit = this._mitt.emit
-        this.all = this._mitt.all
+        this.on = _mitt.on
+        this.off = _mitt.off
+        this.emit = _mitt.emit
+        this.all = _mitt.all
     }
 }
