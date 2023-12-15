@@ -3,6 +3,7 @@ export interface TaskNodeConfig {
     id: string;
     x: number;
     y: number;
+    key: string;
     stroke?: string;
     fill?: string;
     name: string;
@@ -16,6 +17,7 @@ export declare class TaskNode extends Konva.Group {
     taskIcon: Konva.Image | undefined;
     taskName: Konva.Text;
     bgRect: Konva.Rect;
+    key: string;
     constructor(config: TaskNodeConfig);
     select(): void;
     unSelect(): void;

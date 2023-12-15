@@ -34,6 +34,7 @@ export default () => ({
             const [ x, y, _, __, ] = $.shape.split(/\,\s*/)
             taskConfigs.push({
                 id: task_id,
+                key,
                 x: parseInt(x),
                 y: parseInt(y),
                 name,
