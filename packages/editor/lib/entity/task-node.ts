@@ -17,6 +17,7 @@ export interface TaskNodeConfig {
 
 export class TaskNode extends Konva.Group {
   __isTask = true
+  _isSelected = false
   // taskIcon: Konva.Image
   taskName: Konva.Text
   bgRect: Konva.Rect
@@ -82,10 +83,12 @@ export class TaskNode extends Konva.Group {
   }
 
   select() {
+    this._isSelected = true
     this.bgRect.fill('#FD8041')
   }
 
   unSelect() {
+    this._isSelected = false
     this.bgRect.fill('#FFF')
   }
 }

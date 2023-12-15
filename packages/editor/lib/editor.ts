@@ -4,6 +4,7 @@ import { BgGridPlugin, StateTool, SelectEntity, FilePlugin } from './plugins'
 import { Invoker } from './command'
 import { Engine } from './engine'
 import { partition } from '@cvrts/utils'
+import { TaskNode } from './entity'
 
 /**
  * 编辑器配置
@@ -13,10 +14,23 @@ type EditorConfigT = {
 }
 
 /**
+ * 编辑器状态数据
+ */
+type EditorState = {
+  /**
+   * 当前编辑器选中的task节点
+   */
+  selectedTasks: Array<TaskNode>
+}
+
+/**
  * 规则编辑器
  * @constructor
  */
 export class Editor {
+  state: EditorState = {
+    selectedTasks: []
+  }
   engine!: Engine
   invoker: Invoker = new Invoker({})
   plugins: Array<PluginT | PluginCoinfg> = []

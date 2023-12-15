@@ -17,8 +17,9 @@ export default (): PluginT => ({
 
   install(engine: Engine): void {
     engine.on('contextmenu', (e) => {
-      // e.evt.preventDefault();
-
+      // 手动触发一次事件，因为radix vue组件停止了事件传播
+      engine.fire('mousedown', e)
+      
       const shape = e.target
 
       if (shape === engine) {
@@ -27,6 +28,7 @@ export default (): PluginT => ({
         y.value = _y
         target.value = Target.Blank
         toggleState.value = true
+
         return;
       }
 

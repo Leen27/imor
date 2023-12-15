@@ -4,14 +4,14 @@ import type { TaskLink, TaskNode } from "../entity";
 import { throttle } from "@cvrts/utils";
 import { isEngine } from "../utils/is";
 import { getTaskNode } from '../utils/node'
+import type { Editor } from "../editor";
 
 export default () => ({
   name: 'select-entity',
 
-  install(engine: Engine): void {
+  install(engine: Engine, editor: Editor): void {
     let startLayer: Konva.Layer | null = null;
     let dragNode: TaskNode | null = null
-    let selectNode: TaskNode | null = null
 
     const updateLine = throttle(20, () => {
         if (dragNode) {
@@ -21,9 +21,7 @@ export default () => ({
     })
 
     const doSelectNode = (node: TaskNode) => {
-        selectNode?.unSelect()
-        node?.select()
-        selectNode = node
+        editor.command('SELECT_TASK_NODE', { tasks: node })
         dragNode = null
     }
 
@@ -41,11 +39,13 @@ export default () => ({
             taskNode.moveTo(engine.dragLayer);
             taskNode.startDrag();
             dragNode = taskNode
+            return
         }
 
         if (isEngine(shape)) {
-            selectNode?.unSelect()
+            editor.command('UN_SELECT_ALL_TASK_NODE')
             dragNode = null
+            return
         }        
     });
 
@@ -55,7 +55,7 @@ export default () => ({
         if (dragNode) {
             dragNode.moveTo(startLayer);
             dragNode.stopDrag()
-            doSelectNode(dragNode)
+            editor.command('SELECT_TASK_NODE', { tasks: dragNode })
         }
     });
   },

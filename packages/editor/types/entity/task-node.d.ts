@@ -12,6 +12,7 @@ export interface TaskNodeConfig {
 }
 export declare class TaskNode extends Konva.Group {
     __isTask: boolean;
+    _isSelected: boolean;
     taskName: Konva.Text;
     bgRect: Konva.Rect;
     constructor(config: TaskNodeConfig);

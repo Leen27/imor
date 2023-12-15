@@ -28,6 +28,45 @@ export default {
       return Promise.resolve()
     }
   },
+  SELECT_TASK_NODE: {
+    execute(editor: Editor , { tasks }: { tasks: TaskNode | TaskNode[] }) {
+      const taskArray = Array.isArray(tasks) ? tasks : [tasks]
+      const state = editor.state
+
+      for(let i = 0; i < state.selectedTasks.length; i++) {
+        state.selectedTasks[i].unSelect()
+      }
+
+      editor.state.selectedTasks = []
+
+      for(let i = 0; i < taskArray.length; i++) {
+        if(!taskArray[i]) continue;
+        state.selectedTasks.push(taskArray[i])
+        taskArray[i].select()
+      }
+
+      return Promise.resolve(state.selectedTasks)
+    },
+    undo() {
+      return Promise.resolve()
+    }
+  },
+  UN_SELECT_ALL_TASK_NODE: {
+    execute(editor: Editor) {    
+      const state = editor.state
+
+      for(let i = 0; i < state.selectedTasks.length; i++) {
+        state.selectedTasks[i].unSelect()
+      }
+
+      state.selectedTasks = []
+
+      return Promise.resolve(state.selectedTasks)
+    },
+    undo() {
+      return Promise.resolve()
+    }
+  },
   ADD_TASK: {
     execute: function (editor: Editor , { tasks }: { tasks: TaskNodeConfig | TaskNodeConfig[] }) {
       const configs = Array.isArray(tasks) ? tasks : [tasks]
