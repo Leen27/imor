@@ -14,9 +14,9 @@ export default defineConfig({
             fileName: 'index'
         },
         rollupOptions: {
-            // external: [
-            //     '@cvrts/shared', '@cvrts/utils'
-            // ],
+            external: [
+                '@cvrts/shared', '@cvrts/utils', '@vue/reactivity'
+            ],
             output: {
                 // inlineDynamicImports: false,
                 // manualChunks: {

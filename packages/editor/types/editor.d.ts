@@ -2,6 +2,7 @@ import type { PluginT, PluginCoinfg } from './plugins';
 import { Invoker } from './command';
 import { Engine } from './engine';
 import { TaskNode } from './entity';
+import { ShallowRef } from '@vue/reactivity';
 /**
  * 编辑器配置
  */
@@ -15,7 +16,7 @@ type EditorState = {
     /**
      * 当前编辑器选中的task节点
      */
-    selectedTasks: Array<TaskNode>;
+    selectedTasks: ShallowRef<Array<TaskNode>>;
 };
 /**
  * 规则编辑器
@@ -28,10 +29,13 @@ export declare class Editor {
     invoker: Invoker;
     plugins: Array<PluginT | PluginCoinfg>;
     constructor(el: HTMLDivElement, configs?: EditorConfigT);
-    initEngine(el: HTMLDivElement): void;
+    initState(): void;
+    initEngine(el: HTMLDivElement): Engine;
     getContainerElement(): HTMLDivElement;
     installPlugins(plugins?: Array<PluginT | PluginCoinfg>): void;
     command(commandName: string, ...args: any): Promise<any> | null;
     loadData(_: string): Promise<any>;
+    on(evtStr: string, handler: (...args: any) => any): void | Engine;
+    fire(eventType: string, evt?: any, bubble?: boolean | undefined): Engine;
 }
 export {};

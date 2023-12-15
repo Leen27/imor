@@ -20,7 +20,7 @@ export default defineConfig({
         },
         rollupOptions: {
             external: [
-                'vue', '@cvrts/shared', '@cvrts/utils', '@cvrts/core'
+                'vue', '@cvrts/shared', '@cvrts/utils', '@cvrts/core', 'radix-vue'
             ],
             output: {
                 // inlineDynamicImports: false,

@@ -18,10 +18,14 @@
   },
   "devDependencies": {
     "@cvrts/shared": "workspace:*",
-    "@cvrts/utils": "workspace:*"
+    "@cvrts/utils": "workspace:*",
+    "@vue/reactivity": "^3.3.11"
   },
   "dependencies": {
     "konva": "^9.2.3",
     "stats.js": "^0.17.0"
+  },
+  "peerDependencies": {
+    "@vue/reactivity": "^3.3.11"
   }
 }

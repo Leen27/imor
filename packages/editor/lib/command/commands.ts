@@ -6,46 +6,24 @@ export interface ICommand {
 }
 
 export default {
-  TEST_TASK_NODE_DATA: {
-    execute() {
-      const data: any = []
-    
-      for(let j = 0; j < 20; j++) {
-        for(let i = 0; i < 20; i++) {
-          data.push({
-            id: 'xxxx' + 1000 * Math.random(),
-            x: 1000  * Math.random(),
-            y: 1000 * Math.random(),
-            name: 'teset_Test' + 1000 * Math.random(),
-            icon: ''
-          })
-        }
-      }
-
-      return Promise.resolve(data)
-    },
-    undo() {
-      return Promise.resolve()
-    }
-  },
   SELECT_TASK_NODE: {
     execute(editor: Editor , { tasks }: { tasks: TaskNode | TaskNode[] }) {
       const taskArray = Array.isArray(tasks) ? tasks : [tasks]
       const state = editor.state
 
-      for(let i = 0; i < state.selectedTasks.length; i++) {
-        state.selectedTasks[i].unSelect()
+      for(let i = 0; i < state.selectedTasks.value.length; i++) {
+        state.selectedTasks.value[i].unSelect()
       }
 
-      editor.state.selectedTasks = []
+      editor.state.selectedTasks.value = []
 
       for(let i = 0; i < taskArray.length; i++) {
         if(!taskArray[i]) continue;
-        state.selectedTasks.push(taskArray[i])
+        state.selectedTasks.value.push(taskArray[i])
         taskArray[i].select()
       }
 
-      return Promise.resolve(state.selectedTasks)
+      return Promise.resolve(state.selectedTasks.value)
     },
     undo() {
       return Promise.resolve()
@@ -55,11 +33,16 @@ export default {
     execute(editor: Editor) {    
       const state = editor.state
 
-      for(let i = 0; i < state.selectedTasks.length; i++) {
-        state.selectedTasks[i].unSelect()
+      if (state.selectedTasks.value.length === 0) {
+        return
       }
 
-      state.selectedTasks = []
+
+      for(let i = 0; i < state.selectedTasks.value.length; i++) {
+        state.selectedTasks.value[i].unSelect()
+      }
+
+      state.selectedTasks.value = []
 
       return Promise.resolve(state.selectedTasks)
     },

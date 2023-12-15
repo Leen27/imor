@@ -12,7 +12,7 @@ import {xml} from './test-xml'
 import ConextMenu from './ConextMenu.vue';
 import { useEditor } from './hooks/use-editor';
 import { TASK_CONFIGS } from '@cvrts/core'
-import type { TaskNode } from '@cvrts/editor';
+import { EditorEvents, type TaskNode } from '@cvrts/editor';
 
 const { editor, editorRef } = useEditor()
 
@@ -32,6 +32,10 @@ onMounted(async () => {
   })
   ?.then(() => {
     editor.value!.command('ADD_LINK', { links })
+  })
+
+  editor.value.on(EditorEvents.TASK_NODE_SELECT_CHANGE, (task: TaskNode) => {
+    console.log(task, 'seleele')
   })
 
 })
