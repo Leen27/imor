@@ -7,25 +7,23 @@
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { Editor } from '@cvrts/editor'
-import contextMenuPlugin from './plugins/context-menu'
-import ConextMenu from './ConextMenu.vue';
-import {xml} from './test-xml'
 
-const editorRef = ref(null)
+import {xml} from './test-xml'
+import ConextMenu from './ConextMenu.vue';
+import { useEditor } from './hooks/use-editor';
+
+const { editor, editorRef } = useEditor()
 
 onMounted(async () => {
-  if (!editorRef.value) return
-
-  const editor = new Editor(editorRef.value, {
-    plugins: [contextMenuPlugin()]
+  if (!editor.value) return
+  const { tasks, links } = await editor.value.loadData(xml)
+  
+  editor.value.command('ADD_TASK', {
+    tasks: tasks.map((t: any) => ({ ...t, icon: '/favicon.ico' }))
   })
-
-  const { tasks, links } = await editor.loadData(xml)
-
-  editor.command('ADD_TASK', { tasks })
   ?.then(() => {
-    editor.command('ADD_LINK', { links })
+    editor.value!.command('ADD_LINK', { links })
   })
+
 })
 </script>

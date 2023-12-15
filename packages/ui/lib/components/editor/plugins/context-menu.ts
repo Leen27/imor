@@ -1,25 +1,16 @@
 import { getTaskNode, type PluginT, Engine } from '@cvrts/editor'
-import { ref } from 'vue'
-
-const toggleState = ref(false)
-const x = ref(0)
-const y = ref(0)
-const target = ref<null | Target>(null)
-
-export enum Target {
-  None = 0,
-  Blank,
-  TASK_NODE
-}
+import { useContextMenu, Target } from '../hooks/use-context-menu'
 
 export default (): PluginT => ({
   name: 'context-menu',
 
   install(engine: Engine): void {
+    const { x, y, target, toggleState } = useContextMenu()
+
     engine.on('contextmenu', (e) => {
       // 手动触发一次事件，因为radix vue组件停止了事件传播
       engine.fire('mousedown', e)
-      
+
       const shape = e.target
 
       if (shape === engine) {
@@ -45,11 +36,3 @@ export default (): PluginT => ({
   }
 })
 
-export const useContextMenu = () => {
-  return {
-    x,
-    y,
-    target,
-    toggleState
-  }
-}

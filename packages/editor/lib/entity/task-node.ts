@@ -18,12 +18,12 @@ export interface TaskNodeConfig {
 export class TaskNode extends Konva.Group {
   __isTask = true
   _isSelected = false
-  // taskIcon: Konva.Image
+  taskIcon: Konva.Image | undefined
   taskName: Konva.Text
   bgRect: Konva.Rect
 
   constructor(config: TaskNodeConfig) {
-    const { id, x = NODE_WIDTH, y = NODE_HEIGHT, stroke = '#000', fill = '#fff', name = '', /* icon = '' */ } = config
+    const { id, x = NODE_WIDTH, y = NODE_HEIGHT, stroke = '#000', fill = '#fff', name = '', icon = '' } = config
     super({
       id,
       x,
@@ -56,21 +56,24 @@ export class TaskNode extends Konva.Group {
     })
     super.add(this.taskName)
 
-    // var wabbitTexture = new Image();
-    // wabbitTexture.src = icon || '/bunny.png';
-
-    // this.taskIcon = new Konva.Image({
-    //   image: wabbitTexture,
-    //   x: NODE_WIDTH * 0.1,
-    //   y: NODE_HEIGHT * 0.1,
-    //   width: NODE_WIDTH * 0.8,
-    //   height: NODE_HEIGHT * 0.8,
-    //   transformsEnabled: 'position',
-    //   perfectDrawEnabled: false,
-    //   listening: false
-    // })
-
-    // super.add(this.taskIcon)
+    if (icon) {
+      var wabbitTexture = new Image();
+      wabbitTexture.src = icon;
+  
+      this.taskIcon = new Konva.Image({
+        image: wabbitTexture,
+        x: NODE_WIDTH * 0.1,
+        y: NODE_HEIGHT * 0.1,
+        width: NODE_WIDTH * 0.8,
+        height: NODE_HEIGHT * 0.8,
+        transformsEnabled: 'position',
+        perfectDrawEnabled: false,
+        listening: false
+      })
+  
+      super.add(this.taskIcon)
+  
+    }
 
     const mask = new Konva.Rect({
       width: NODE_WIDTH,

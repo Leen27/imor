@@ -8,7 +8,7 @@ const configPanelRef = ref(null)
 <template>
   <main>
     <Box>
-      <Editor />
+      <Editor id="editor" />
     </Box>
     <Box>
       <div ref="configPanelRef" id="config-panel"></div>

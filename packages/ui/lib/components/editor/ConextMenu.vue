@@ -22,7 +22,7 @@
       <ContextMenuSub>
         <ContextMenuSubTrigger inset> Task1 {{target}}</ContextMenuSubTrigger>
         <ContextMenuSubContent class="w-48">
-          <ContextMenuItem>Create Shortcut...</ContextMenuItem>
+          <ContextMenuItem>DB</ContextMenuItem>
           <ContextMenuItem>Name Window...</ContextMenuItem>
           <ContextMenuSeparator />
           <ContextMenuItem>Developer Tools</ContextMenuItem>
@@ -50,9 +50,11 @@ import {
   ContextMenuTrigger
 } from '@/index'
 import { onMounted } from 'vue'
-import { useContextMenu, Target } from './plugins/context-menu'
+import { useContextMenu, Target } from './hooks/use-context-menu'
 
 const { target } = useContextMenu()
 
-onMounted(() => {})
+onMounted(() => {
+
+})
 </script>
