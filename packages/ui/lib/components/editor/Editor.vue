@@ -14,6 +14,10 @@ import { useEditor } from './hooks/use-editor';
 import { TASK_CONFIGS } from '@cvrts/core'
 import { EditorEvents, type TaskNode } from '@cvrts/editor';
 
+const emits = defineEmits<{
+  (e: 'selecte', task: any): void
+}>()
+
 const { editor, editorRef } = useEditor()
 
 function getTaskIcon(task: TaskNode) {
@@ -36,6 +40,8 @@ onMounted(async () => {
 
   editor.value.on(EditorEvents.TASK_NODE_SELECT_CHANGE, (task: TaskNode) => {
     console.log(task, 'seleele')
+
+    emits('selecte', task)
   })
 
 })
