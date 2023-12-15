@@ -1,59 +1,39 @@
 <template>
-<ContextMenu>
+  <ContextMenu>
     <ContextMenuTrigger>
       <slot />
     </ContextMenuTrigger>
-    <ContextMenuContent class="w-64">
-      <ContextMenuItem inset>
-        Back - {{ target }}
-        <ContextMenuShortcut>⌘[</ContextMenuShortcut>
-      </ContextMenuItem>
-      <ContextMenuItem inset disabled>
-        Forward
-        <ContextMenuShortcut>⌘]</ContextMenuShortcut>
-      </ContextMenuItem>
-      <ContextMenuItem inset>
-        Reload
-        <ContextMenuShortcut>⌘R</ContextMenuShortcut>
-      </ContextMenuItem>
+    <!-- <TaskContextMenu v-show="target === Target.TASK_NODE" /> -->
+    <template v-if="target === Target.TASK_NODE">
+      <ContextMenuContent class="w-64">
       <ContextMenuSub>
-        <ContextMenuSubTrigger inset>
-          More Tools
-        </ContextMenuSubTrigger>
+        <ContextMenuSubTrigger inset> cut </ContextMenuSubTrigger>
         <ContextMenuSubContent class="w-48">
-          <ContextMenuItem>
-            Save Page As...
-            <ContextMenuShortcut>⇧⌘S</ContextMenuShortcut>
-          </ContextMenuItem>
           <ContextMenuItem>Create Shortcut...</ContextMenuItem>
           <ContextMenuItem>Name Window...</ContextMenuItem>
           <ContextMenuSeparator />
           <ContextMenuItem>Developer Tools</ContextMenuItem>
         </ContextMenuSubContent>
       </ContextMenuSub>
-      <ContextMenuSeparator />
-      <ContextMenuCheckboxItem checked>
-        Show Bookmarks Bar
-        <ContextMenuShortcut>⌘⇧B</ContextMenuShortcut>
-      </ContextMenuCheckboxItem>
-      <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
-      <ContextMenuSeparator />
-      <ContextMenuRadioGroup model-value="pedro">
-        <ContextMenuLabel inset>
-          People
-        </ContextMenuLabel>
-        <ContextMenuSeparator />
-        <ContextMenuRadioItem value="pedro">
-          Pedro Duarte
-        </ContextMenuRadioItem>
-        <ContextMenuRadioItem value="colm">
-          Colm Tuite
-        </ContextMenuRadioItem>
-      </ContextMenuRadioGroup>
     </ContextMenuContent>
+    </template>
+    <template v-else="target === Target.Blank">
+      <ContextMenuContent class="w-64">
+      <ContextMenuSub>
+        <ContextMenuSubTrigger inset> Task1 {{target}}</ContextMenuSubTrigger>
+        <ContextMenuSubContent class="w-48">
+          <ContextMenuItem>Create Shortcut...</ContextMenuItem>
+          <ContextMenuItem>Name Window...</ContextMenuItem>
+          <ContextMenuSeparator />
+          <ContextMenuItem>Developer Tools</ContextMenuItem>
+        </ContextMenuSubContent>
+      </ContextMenuSub>
+    </ContextMenuContent>
+    </template>
   </ContextMenu>
 </template>
 <script setup lang="ts">
+import TaskContextMenu from './ConextMenu.vue'
 import {
   ContextMenu,
   ContextMenuCheckboxItem,
@@ -67,14 +47,12 @@ import {
   ContextMenuSub,
   ContextMenuSubContent,
   ContextMenuSubTrigger,
-  ContextMenuTrigger,
+  ContextMenuTrigger
 } from '@/index'
 import { onMounted } from 'vue'
-import { useContextMenu } from './plugins/context-menu'
+import { useContextMenu, Target } from './plugins/context-menu'
 
 const { target } = useContextMenu()
 
-onMounted(() => {
-
-})
+onMounted(() => {})
 </script>
