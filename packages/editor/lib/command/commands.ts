@@ -1,5 +1,6 @@
 import { TaskLink, TaskLinkRawConfigs, TaskNode, TaskNodeConfig } from '../entity'
 import { Editor } from '../editor'
+
 export interface ICommand {
   execute(...args: any): Promise<any>
   undo(...args: any): Promise<any>
@@ -11,19 +12,21 @@ export default {
       const taskArray = Array.isArray(tasks) ? tasks : [tasks]
       const state = editor.state
 
-      for(let i = 0; i < state.selectedTasks.value.length; i++) {
-        state.selectedTasks.value[i].unSelect()
+      for(let i = 0; i < state.selectedTasks.length; i++) {
+        state.selectedTasks[i].unSelect()
       }
 
-      editor.state.selectedTasks.value = []
+      const newArr = []
 
       for(let i = 0; i < taskArray.length; i++) {
         if(!taskArray[i]) continue;
-        state.selectedTasks.value.push(taskArray[i])
+        newArr.push(taskArray[i])
         taskArray[i].select()
       }
 
-      return Promise.resolve(state.selectedTasks.value)
+      state.selectedTasks = newArr
+
+      return Promise.resolve(state.selectedTasks)
     },
     undo() {
       return Promise.resolve()
@@ -33,16 +36,16 @@ export default {
     execute(editor: Editor) {    
       const state = editor.state
 
-      if (state.selectedTasks.value.length === 0) {
+      if (state.selectedTasks.length === 0) {
         return
       }
 
 
-      for(let i = 0; i < state.selectedTasks.value.length; i++) {
-        state.selectedTasks.value[i].unSelect()
+      for(let i = 0; i < state.selectedTasks.length; i++) {
+        state.selectedTasks[i].unSelect()
       }
 
-      state.selectedTasks.value = []
+      state.selectedTasks = []
 
       return Promise.resolve(state.selectedTasks)
     },

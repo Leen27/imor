@@ -3,4 +3,5 @@ export * from "@/components/ui/button";
 export * from "@/components/ui/context-menu";
 export * from "@/components/ui/dropdown-menu";
 export { Box } from "@/components/container";
-export { default as Editor } from "@/components/editor";
+export { default as Editor } from "@/components/editor/Editor.vue";
+export { useEditor } from "@/components/editor/hooks/use-editor";

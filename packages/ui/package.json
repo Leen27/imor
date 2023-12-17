@@ -17,11 +17,12 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@cvrts/shared": "workspace:*",
-    "@cvrts/utils": "workspace:*",
     "@cvrts/core": "workspace:*",
     "@cvrts/editor": "workspace:*",
+    "@cvrts/shared": "workspace:*",
+    "@cvrts/utils": "workspace:*",
     "add": "^2.0.6",
+    "rollup-plugin-visualizer": "^5.11.0",
     "vue": "^3.3.10"
   },
   "dependencies": {
@@ -34,9 +35,9 @@
   },
   "peerDependencies": {
     "@cvrts/core": "workspace:*",
+    "@cvrts/editor": "workspace:*",
     "@cvrts/shared": "workspace:*",
     "@cvrts/utils": "workspace:*",
-    "@cvrts/editor": "workspace:*",
     "add": "^2.0.6",
     "vue": "^3.3.10"
   }

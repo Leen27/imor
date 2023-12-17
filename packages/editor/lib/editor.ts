@@ -5,8 +5,6 @@ import { Invoker } from './command'
 import { Engine } from './engine'
 import { partition } from '@cvrts/utils'
 import { TaskNode } from './entity'
-import { EditorEvents } from './events'
-import { shallowRef, effect, ShallowRef } from '@vue/reactivity'
 /**
  * 编辑器配置
  */
@@ -21,7 +19,7 @@ type EditorState = {
   /**
    * 当前编辑器选中的task节点
    */
-  selectedTasks: ShallowRef<Array<TaskNode>>
+  selectedTasks: Array<TaskNode>
 }
 
 /**
@@ -44,15 +42,10 @@ export class Editor {
   }
 
   initState() {
-    this.state = {
-      selectedTasks: shallowRef([])
+    const that = this
+    that.state = {
+      selectedTasks: []
     }
-
-    effect(() => {
-      if (this.state.selectedTasks.value) {
-        this.fire(EditorEvents.TASK_NODE_SELECT_CHANGE, this.state.selectedTasks.value)
-      }
-    })
   }
 
   initEngine(el: HTMLDivElement) {

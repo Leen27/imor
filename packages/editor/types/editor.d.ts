@@ -2,7 +2,6 @@ import type { PluginT, PluginCoinfg } from './plugins';
 import { Invoker } from './command';
 import { Engine } from './engine';
 import { TaskNode } from './entity';
-import { ShallowRef } from '@vue/reactivity';
 /**
  * 编辑器配置
  */
@@ -16,7 +15,7 @@ type EditorState = {
     /**
      * 当前编辑器选中的task节点
      */
-    selectedTasks: ShallowRef<Array<TaskNode>>;
+    selectedTasks: Array<TaskNode>;
 };
 /**
  * 规则编辑器
