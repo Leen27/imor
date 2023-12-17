@@ -3,8 +3,9 @@ import type { PluginT, PluginCoinfg } from './plugins'
 import { BgGridPlugin, StateTool, SelectEntity, FilePlugin } from './plugins'
 import { Invoker } from './command'
 import { Engine } from './engine'
-import { partition } from '@cvrts/utils'
+import { partition, Observable } from '@cvrts/utils'
 import { TaskNode } from './entity'
+import { EditorEvents } from './events'
 /**
  * 编辑器配置
  */
@@ -43,9 +44,24 @@ export class Editor {
 
   initState() {
     const that = this
-    that.state = {
+    that.state = Observable({
       selectedTasks: []
-    }
+    }, (data: {
+      action: 'set' | 'get' | 'delete',
+      path: string,
+      target: any,
+      newValue: any,
+      previousValue: any,
+    }) => {
+      if (data.action !== 'set') {
+        return
+      }
+
+      if (data.path === 'selectedTasks') {
+        that.engine.fire(EditorEvents.TASK_NODE_SELECT_CHANGE, data.newValue)
+        return;
+      }
+    })
   }
 
   initEngine(el: HTMLDivElement) {

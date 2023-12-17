@@ -59,8 +59,8 @@ onMounted(async () => {
           editor.value!.command('ADD_LINK', { links: props.editorData.links })
         })
 
-      editor.value.engine.on(EditorEvents.TASK_NODE_SELECT_CHANGE, (nodes: any) => {
-        emits('selecte', nodes)
+      editor.value.on(EditorEvents.TASK_NODE_SELECT_CHANGE, (nodes: any) => {
+        emits('selecte', [...nodes])
       })
     }
   )
