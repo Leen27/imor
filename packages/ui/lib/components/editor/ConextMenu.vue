@@ -22,7 +22,7 @@
       <ContextMenuSub>
         <ContextMenuSubTrigger inset> Task1 {{target}}</ContextMenuSubTrigger>
         <ContextMenuSubContent class="w-48">
-          <ContextMenuItem>DB</ContextMenuItem>
+          <ContextMenuItem @click="createTask('db_read', x, y)">DB</ContextMenuItem>
           <ContextMenuItem>Name Window...</ContextMenuItem>
           <ContextMenuSeparator />
           <ContextMenuItem>Developer Tools</ContextMenuItem>
@@ -47,14 +47,14 @@ import {
   ContextMenuSub,
   ContextMenuSubContent,
   ContextMenuSubTrigger,
-  ContextMenuTrigger
+  ContextMenuTrigger,
+useEditor
 } from '@/index'
 import { onMounted } from 'vue'
 import { useContextMenu, Target } from './hooks/use-context-menu'
 
-const { target } = useContextMenu()
-
+const { target, x, y } = useContextMenu()
+const { createTask } = useEditor()
 onMounted(() => {
-
 })
 </script>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, reactive, ref, type Ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { Editor, Box, useEditor } from '@cvrts/ui'
 
 const configPanelRef = ref(null)
@@ -13,7 +13,6 @@ const editorData = ref({
 onMounted(async () => {
   if (!editorRef.value) return 
   const res = await editor.value.loadData(xml)
-  console.log(res)
   editorData.value = res
 })
 
@@ -24,7 +23,6 @@ const selectHandle = (node: any) => {
 
 <template>
   <main>
-    {{ editor?.state }}
     <Box>
       <Editor
         id="editor"

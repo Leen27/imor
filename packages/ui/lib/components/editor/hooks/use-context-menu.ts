@@ -18,5 +18,5 @@ export const useContextMenu = () => {
       target,
       toggleState
     }
-  }
+}
   
